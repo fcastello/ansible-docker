@@ -2,7 +2,7 @@
 
 - name: install basic required software
   apt:
-    name: "{{packages}}"
+    name: "{{ packages }}"
     update_cache: yes
   vars:
     packages:
@@ -26,7 +26,7 @@
 
 - name: Add Docker apt repository
   apt_repository:
-    repo: "deb [arch={{deb_architecture.stdout}}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release | lower }} stable"
+    repo: "deb [arch={{ deb_architecture.stdout }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release | lower }} stable"
     state: present
 
 - name: Install docker-ce package
