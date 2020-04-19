@@ -5,14 +5,14 @@
     update_cache: yes
   vars:
     packages:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
-    - python-pip
-    - python-docker
-    - python3-pip
-    - python3-docker
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python-pip
+      - python-docker
+      - python3-pip
+      - python3-docker
 
 - name: Add docker gpg apt key
   apt_key:
