@@ -1,5 +1,4 @@
 ---
-
 - name: install basic required software
   apt:
     name: "{{ packages }}"
