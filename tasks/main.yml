@@ -1,0 +1,35 @@
+---
+
+- name: install basic required software
+  apt:
+    name: "{{packages}}"
+    update_cache: yes
+  vars:
+    packages:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    - python-pip
+    - python-docker
+    - python3-pip
+    - python3-docker
+
+- name: Add docker gpg apt key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: get architecture
+  shell: dpkg --print-architecture
+  register: deb_architecture
+
+- name: Add Docker apt repository
+  apt_repository:
+    repo: "deb [arch={{deb_architecture.stdout}}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release | lower }} stable"
+    state: present
+
+- name: Install docker-ce package
+  apt:
+    name: docker-ce
+    state: present
