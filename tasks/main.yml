@@ -9,8 +9,6 @@
       - ca-certificates
       - curl
       - software-properties-common
-      - python-pip
-      - python-docker
       - python3-pip
       - python3-docker
 
