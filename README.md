@@ -6,7 +6,7 @@ A playbook to install docker in ubuntu based OS.
 Requirements
 ------------
 
-- Ubuntu installed (tested with 18.04)
+- Ubuntu installed (tested with 18.04 and ubuntu 20.04)
 
 Role Variables
 --------------
