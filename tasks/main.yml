@@ -15,6 +15,7 @@
 - name: Add docker gpg apt key
   ansible.builtin.apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
+    keyring: /etc/apt/keyrings/docker.asc
     state: present
 
 - name: Get architecture
@@ -23,7 +24,9 @@
 
 - name: Add Docker apt repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch={{ deb_architecture.stdout }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release | lower }} stable"
+    repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.asc]\
+          https://download.docker.com/linux/{{ ansible_distribution | lower }} \
+          {{ ansible_distribution_release | lower }} stable"
     state: present
 
 - name: Install docker-ce package
