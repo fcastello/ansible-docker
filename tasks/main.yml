@@ -20,7 +20,8 @@
   changed_when: false
 
 - name: Get architecture
-  ansible.builtin.shell: dpkg --print-architecture
+  ansible.builtin.command:
+    cmd: dpkg --print-architecture
   register: deb_architecture
   changed_when: false
 
