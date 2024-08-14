@@ -1,2 +1,15 @@
 ---
-# Defaults go here
+docker_data_root: /data/docker
+
+docker_experimental_features: false
+
+docker_ip_forward: true
+docker_ip_masq: true
+docker_iptables: true
+docker_ip6tables: false
+docker_ipv6: false
+docker_live_restore: true
+
+docker_max_concurrent_downloads: 6
+docker_max_concurrent_uploads: 5
+docker_max_download_attempts: 5
