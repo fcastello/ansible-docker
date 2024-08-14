@@ -1,0 +1,29 @@
+{
+  "data-root": "{{ docker_data_root }}",
+  "dns": [],
+  "dns-opts": [],
+  "dns-search": [],
+  "exec-opts": [],
+  "experimental": {{ docker_experimental_features }},
+  "ip-forward": {{ docker_ip_forward }},
+  "ip-masq": {{ docker_ip_masq }},
+  "iptables": {{ docker_iptables }},
+  "ip6tables": {{ docker_ip6tables }},
+  "ipv6": {{ docker_ipv6 }},
+  "live-restore": {{ docker_live_restore }},
+  "log-driver": "json-file",
+  "log-level": "",
+  "log-opts": {
+    "cache-disabled": "false",
+    "cache-max-file": "5",
+    "cache-max-size": "20m",
+    "cache-compress": "true",
+    "env": "os,customer",
+    "labels": "somelabel",
+    "max-file": "5",
+    "max-size": "10m"
+  },
+  "max-concurrent-downloads": {{ docker_max_concurrent_downloads }},
+  "max-concurrent-uploads": {{ docker_max_concurrent_uploads }},
+  "max-download-attempts": {{ docker_max_download_attempts }}
+}
