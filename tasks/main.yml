@@ -11,12 +11,12 @@
       - software-properties-common
       - python3-pip
       - python3-docker
+      - gnupg-agent
 
 - name: Add docker gpg apt key
-  ansible.builtin.apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    keyring: /etc/apt/keyrings/docker.asc
-    state: present
+  ansible.builtin.shell:
+    cmd: 'curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/docker.gpg > /dev/null'
+
 
 - name: Get architecture
   ansible.builtin.shell: dpkg --print-architecture
@@ -24,14 +24,25 @@
 
 - name: Add Docker apt repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.asc]\
+    repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/etc/apt/trusted.gpg.d/docker.gpg] \
           https://download.docker.com/linux/{{ ansible_distribution | lower }} \
           {{ ansible_distribution_release | lower }} stable"
     state: present
 
+- name: Install basic required software
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
 - name: Create docker config directory
   ansible.builtin.file:
     path: /etc/docker
+    state: directory
+    mode: '0755'
+
+- name: Create docker data directory
+  ansible.builtin.file:
+    path: "{{ docker_data_root }}"
     state: directory
     mode: '0755'
 
@@ -42,6 +53,7 @@
     owner: root
     group: root
     mode: '0644'
+  notify: Restart docker
 
 - name: Install docker-ce package
   ansible.builtin.apt:
