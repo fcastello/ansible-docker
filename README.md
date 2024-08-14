@@ -25,16 +25,13 @@ Example Playbook
 To Do
 -----
 
-- Change the default docker path
-- Add a customizable docker config
 - Add a way to pin to specific version
-- Docker configuration without iptables
 - Change default subnet to docker0 bridge
 - Add a way to configure multiple bridges
 
 Limitations
 -----------
-- Tested only in ubuntu 18.04. It should work in newer versions too but hasnt been tested.
+- Tested only in ubuntu 24.04. It should work in newer versions too but hasn't been tested. I might work with 18.04, 20.04 and 22.04 but without any guarantees 
 - Might work in other Debian based distributions but has not been tested.
 - has been tested with amd64 and arm64 architectures. 
 

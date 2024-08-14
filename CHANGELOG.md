@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [0.1.0] - 2024-08-14
+### Added
+- templated config file for disabling iptables and a few other options
+### Fixed
+- Ansible version to 2.17
+- Fixed linting errors from ansible-lint
+- Fixed apt keyrings to support trusted.gpg.d from deprecated apt-key
+
 ## [0.0.5] - 2021-09-03
 ### Removed
 - installation of python-pip and python-docker
