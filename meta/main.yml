@@ -4,7 +4,7 @@ galaxy_info:
   description: Role to install docker in ubuntu based environments
   company: pancho.dev
   license: license (MIT)
-  min_ansible_version: 2.9
+  min_ansible_version: "2.17"
   platforms:
   - name: Ubuntu
     versions:
