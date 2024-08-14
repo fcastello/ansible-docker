@@ -29,6 +29,20 @@
           {{ ansible_distribution_release | lower }} stable"
     state: present
 
+- name: Create docker config directory
+  ansible.builtin.file:
+    path: /etc/docker
+    state: directory
+    mode: '0755'
+
+- name: Copy docker config file
+  ansible.builtin.template:
+    src: daemon.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Install docker-ce package
   ansible.builtin.apt:
     name: docker-ce
