@@ -15,7 +15,7 @@
 
 - name: Add docker gpg apt key
   ansible.builtin.shell:
-    cmd: 'curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/docker.gpg > /dev/null'
+    cmd: 'set -o pipefail && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/docker.gpg > /dev/null'
 
 
 - name: Get architecture
