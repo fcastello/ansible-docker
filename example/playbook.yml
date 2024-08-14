@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-playbook
+
+- name: Install Docker
+  hosts: all
+  gather_facts: true
+  become: true
+
+
+  tasks:
+    - name: Install Docker
+      ansible.builtin.import_role:
+        name: ../../ansible-docker
